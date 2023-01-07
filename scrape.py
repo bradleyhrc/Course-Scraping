@@ -9,8 +9,8 @@ def email(course: str, section: str, recipient: str) -> None:
     server.connect("smtp.gmail.com", 587)
     server.starttls()
 
-    # removed app password for security
-    server.login("htn.fact.checker@gmail.com", "")
+    # redacted app password from github for security
+    server.login("htn.fact.checker@gmail.com", "") 
 
     # using old hackathon gmail account that is no longer being used
     sender = "htn.fact.checker@gmail.com"
@@ -56,8 +56,7 @@ def check_spots(course: str, url: str, notifyID: str) -> None:
     for sect in results:
         if sect[1] > sect[2]: 
             print('A seat opened up in ' + sect[0] + '!')
-            email(course, sect[0], notifyID)
-    
+            email(course, sect[0], notifyID) 
 
 if __name__ == "__main__":
     URL1 = "https://classes.uwaterloo.ca/cgi-bin/cgiwrap/infocour/salook.pl?level=under&sess=1231&subject=CS&cournum=350"
