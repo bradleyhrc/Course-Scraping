@@ -23,7 +23,6 @@ def email(course: str, section: str, recipient: str) -> None:
     server.quit() # disconnect
 
 def check_spots(course: str, url: str, notifyID: str) -> None:
-    
     # Make a GET request to the website
     html = requests.get(url)
     soup = BeautifulSoup(html.text, 'html.parser')
@@ -34,7 +33,6 @@ def check_spots(course: str, url: str, notifyID: str) -> None:
     results = []
     
     for c in classes:
-        
         # clean results
         if "LEC" not in str(c): continue
         
@@ -54,8 +52,9 @@ def check_spots(course: str, url: str, notifyID: str) -> None:
         results.append(c)
 
     for sect in results:
-        if sect[1] > sect[2]: 
-            print('A seat opened up in ' + sect[0] + '!')
+        # cap > enrollment
+        if sect[1] > sect[2]:
+            print(f'A seat opened up in {course} {sect[0]}!')
             email(course, sect[0], notifyID) 
 
 if __name__ == "__main__":
