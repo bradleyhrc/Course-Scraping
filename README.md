@@ -1,4 +1,4 @@
-# Course-Scraping
+# course-scraping
  
 Built an automated script in Python to check course availability because I'm waiting for spots to open up in courses I need.
 
